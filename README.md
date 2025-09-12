@@ -1,54 +1,56 @@
-# 🤖 Offline AI Hiring Resume Screener
+📌 Case Study: Offline AI Hiring Resume Screener
+🚨 Problem
 
-A private, local-first AI assistant for resume screening, capable of performing recruiter-style Q&A and intelligent resume ranking without internet access.
+Recruiters often spend hours manually screening resumes:
 
----
+Time-consuming (2+ hrs for ~100 resumes).
 
-## 🧠 Overview
+Inconsistent evaluations.
 
-This project aims to streamline the recruitment process by reducing manual effort through automation and intelligent AI-driven screening. The app evaluates candidate resumes against job descriptions and predefined rubrics, enabling explainable, transparent, and private hiring decisions.
+Lack of explainable shortlisting.
 
----
+Concerns about data privacy when using cloud-based tools.
 
-## 🛠️ Tech Stack
+💡 Solution
 
-- **Frontend**: Streamlit (local app interface)
-- **NLP & AI**:
-  - `MiniLM` for generating semantic embeddings
-  - `Mistral-7B` integrated using **RAG** (Retrieval-Augmented Generation)
-- **Frameworks**: LangChain, FAISS
-- **Cloud/Local Compute**: Vertex AI (for remote model execution)
+I built an Offline AI Resume Screener:
 
----
+A local Streamlit app that works entirely offline.
 
-## 🔍 Features
+Uses MiniLM embeddings for semantic search.
 
-- 📄 Resume parsing and semantic embedding
-- 🔗 Job description comparison using vector search
-- ✅ Scoring via rubric-based criteria
-- 💬 Recruiter-style Q&A powered by RAG
-- 🛡️ Fully offline mode for secure data handling
+Powered by Mistral-7B LLM with RAG (Retrieval-Augmented Generation) for contextual answers.
 
----
+Provides recruiter-style Q&A (e.g., “Does this candidate have SQL experience?”).
 
-## 📈 Impact
+Ensures transparent, explainable ranking of resumes.
 
-- ⏱️ Reduced manual resume screening time by 50%
-- 🔐 Ensures privacy and control in hiring decisions
-- 🤝 Promotes transparency and explainability for recruiters
+🛠️ Tech Stack
 
----
+Frontend/App: Streamlit
 
-## 📁 Project Structure
+ML & AI: MiniLM embeddings, Mistral-7B, LangChain, FAISS
 
-```bash
-resume_screener/
-├── app.py                   # Streamlit interface
-├── embeddings.py            # MiniLM + FAISS logic
-├── rag_chain.py             # RAG + Mistral-7B setup
-├── rubric.yaml              # Rules for scoring resumes
-├── data/
-│   ├── resumes/             # Candidate resumes (PDFs)
-│   ├── job_descriptions/    # Target job roles
-│   └── outputs/             # Shortlist results
-└── README.md
+Deployment: Local (privacy-first), GCP Vertex AI (for experiments)
+
+Languages: Python
+
+📊 Results & Impact
+
+⏱️ Reduced manual screening effort by ~50% (2 hrs → ~1 hr per 100 resumes).
+
+🔍 Explainable AI → Every ranking included a rationale, avoiding “black-box” outputs.
+
+🔒 Privacy-first → Runs offline, ensuring candidate data security.
+
+⚡ Scalable → Can handle 100s of resumes consistently and quickly.
+
+🎯 Business Relevance
+
+This project demonstrates how Applied AI + RAG pipelines can transform HR workflows:
+
+Faster, fairer candidate shortlisting.
+
+Reduced recruiter workload → lower hiring costs.
+
+Compliance-friendly (local execution, no external API calls).
